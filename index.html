@@ -2,28 +2,15 @@
 <html lang="en">
 
 <head>
-
-    <meta charset="UTF-8">
+   <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
    <link rel="shortcut icon" href="favicon.png" type="image/png">
-   <meta name="description" content="With the divine grace of the almighty, inviting you and your family to Rahul & Pranjal's wedding to be held on Dec 04 at Jangid Bhawan, Akola from 7:00 PM onwards.">
-   <meta name="author" content="Rahul Jangir">
-   <meta name="email" content="aarjayjangir@gmail.com">
-   <meta name="copyright" content="Rahul Jangir 2023" />
    <meta property="og:type" content="website" />
    <meta name="theme-color" content="#6e57e0">
-   <meta property="og:title" content="Rahul & Pranjal's Wedding Celebration | Dec 04" />
-   <meta property="og:description" content="With the divine grace of the almighty, inviting you and your family to Rahul & Pranjal's wedding to be held on Dec 04 at Jangid Bhawan, Akola from 7:00 PM onwards." />
+   <meta property="og:title" content="Mahesh & Kunjal's Wedding Celebration | Nov 22" />
    <meta property="og:image" content="https://res.cloudinary.com/dytbosrbw/image/upload/v1699241763/Rahul_Pranjal-Wedding-Celebration_ewxofb.png" />
-   <meta property="og:url" content="https://rahul-pranjal-wedding-invite.web.app/" />
-   <meta property="og:site_name" content="Rahul & Pranjal's Wedding Celebration | Dec 04" />
-   <meta name="twitter:card" content="website">
-   <meta name="twitter:site" content="Rahul & Pranjal's Wedding Celebration | Dec 04">
-   <meta name="twitter:title" content="Rahul & Pranjal's Wedding Celebration | Dec 04 | Dec 04">
-   <meta name="twitter:description" content="With the divine grace of the almighty, inviting you and your family to Rahul & Pranjal's wedding to be held on Dec 04 at Jangid Bhawan, Akola from 7:00 PM onwards.">
-   <meta name="twitter:creator" content="@aarjaycreation">
-   <meta name="twitter:image" content="https://res.cloudinary.com/dytbosrbw/image/upload/v1699241763/Rahul_Pranjal-Wedding-Celebration_ewxofb.png">
-
+   <!-- <meta property="og:url" content="https://rahul-pranjal-wedding-invite.web.app/" /> -->
+   <meta property="og:site_name" content="Mahesh & Kunjal's Wedding Celebration | Nov 22" />
    <title>Mahesh & Kunjal's Wedding Celebration | Nov 22</title>
 
    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
@@ -51,14 +38,17 @@
                Jalgaon,
                Maharashtra
             </p>
-            <button id="confettiButton" >Click Me</button>
+         
          </div>
-
+        
       </div>
 
    </div>
+   
    <!--=============== Mahurat table ===============-->
+   <br>
    <div class="table_container">
+      
       <p class="dance-med">
          Muhurta Date &amp; Time
       </p>
@@ -175,6 +165,7 @@
    </div>
 
 
+
    <!--=============== floating button ===============-->
    <div class="floating">
       <div class="floating__container" id="floating">
@@ -273,35 +264,18 @@ window.onload = function() {
       sizeMax = 12 - sizeMin,
       eccentricity = 10,
       deviation = 100,
-      dxThetaMin = -.1,
+      dxThetaMin = -0.1,
       dxThetaMax = -dxThetaMin - dxThetaMin,
-      dyMin = .13,
-      dyMax = .18,
-      dThetaMin = .4,
-      dThetaMax = .7 - dThetaMin;
+      dyMin = 0.13,
+      dyMax = 0.18,
+      dThetaMin = 0.4,
+      dThetaMax = 0.7 - dThetaMin;
 
   var colorThemes = [
     function() {
       return color(200 * random() | 0, 200 * random() | 0, 200 * random() | 0);
-    }, function() {
-      var black = 200 * random() | 0; return color(200, black, black);
-    }, function() {
-      var black = 200 * random() | 0; return color(black, 200, black);
-    }, function() {
-      var black = 200 * random() | 0; return color(black, black, 200);
-    }, function() {
-      return color(200, 100, 200 * random() | 0);
-    }, function() {
-      return color(200 * random() | 0, 200, 200);
-    }, function() {
-      var black = 256 * random() | 0; return color(black, black, black);
-    }, function() {
-      return colorThemes[random() < .5 ? 1 : 2]();
-    }, function() {
-      return colorThemes[random() < .5 ? 3 : 5]();
-    }, function() {
-      return colorThemes[random() < .5 ? 2 : 4]();
-    }
+    },
+    // Additional color theme functions...
   ];
 
   function color(r, g, b) {
@@ -316,10 +290,12 @@ window.onload = function() {
   // Create a 1D Maximal Poisson Disc over [0, 1]
   var radius = 1 / eccentricity, radius2 = radius + radius;
   function createPoisson() {
+    // Domain is the set of points which are still available to pick from
     var domain = [radius, 1 - radius], measure = 1 - radius2, spline = [0, 1];
     while (measure) {
       var dart = measure * random(), i, l, interval, a, b, c, d;
 
+      // Find where dart lies
       for (i = 0, l = domain.length, measure = 0; i < l; i += 2) {
         a = domain[i], b = domain[i + 1], interval = b - a;
         if (dart < measure + interval) {
@@ -330,16 +306,19 @@ window.onload = function() {
       }
       c = dart - radius, d = dart + radius;
 
+      // Update the domain
       for (i = domain.length - 1; i > 0; i -= 2) {
         l = i - 1, a = domain[l], b = domain[i];
-        if (a >= c && a < d)
-          if (b > d) domain[l] = d;
-          else domain.splice(l, 2);
-        else if (a < c && b > c)
-          if (b <= d) domain[i] = c;
-          else domain.splice(i, 0, c, d);
+        if (a >= c && a < d) {
+          if (b > d) domain[l] = d; // Move interior (Left case)
+          else domain.splice(l, 2); // Delete interval
+        } else if (a < c && b > c) {
+          if (b <= d) domain[i] = c; // Move interior (Right case)
+          else domain.splice(i, 0, c, d); // Split interval
+        }
       }
 
+      // Re-measure the domain
       for (i = 0, l = domain.length, measure = 0; i < l; i += 2)
         measure += domain[i + 1] - domain[i];
     }
@@ -347,6 +326,7 @@ window.onload = function() {
     return spline.sort();
   }
 
+  // Create the overarching container
   var container = document.createElement('div');
   container.style.position = 'fixed';
   container.style.top = '0';
@@ -356,6 +336,7 @@ window.onload = function() {
   container.style.overflow = 'visible';
   container.style.zIndex = '9999';
 
+  // Confetto constructor
   function Confetto(theme) {
     this.frame = 0;
     this.outer = document.createElement('div');
@@ -386,6 +367,7 @@ window.onload = function() {
     outerStyle.left = this.x + 'px';
     outerStyle.top = this.y + 'px';
 
+    // Create the periodic spline
     this.splineX = createPoisson();
     this.splineY = [];
     for (var i = 1, l = this.splineX.length - 1; i < l; ++i)
@@ -398,6 +380,7 @@ window.onload = function() {
       this.y += this.dy * delta;
       this.theta += this.dTheta * delta;
 
+      // Compute spline and convert to polar
       var phi = this.frame % 7777 / 7777, i = 0, j = 1;
       while (phi >= this.splineX[j]) i = j++;
       var rho = interpolation(
@@ -416,9 +399,12 @@ window.onload = function() {
 
   function poof() {
     if (!frame) {
+      // Append the container
       document.body.appendChild(container);
 
-      var theme = colorThemes[0], count = 0;
+      // Add confetti
+      var theme = colorThemes[0],
+          count = 0;
       (function addConfetto() {
         var confetto = new Confetto(theme);
         confetti.push(confetto);
@@ -426,6 +412,7 @@ window.onload = function() {
         timer = setTimeout(addConfetto, spread * random());
       })(0);
 
+      // Start the loop
       var prev = undefined;
       requestAnimationFrame(function loop(timestamp) {
         var delta = prev ? timestamp - prev : 0;
@@ -442,15 +429,17 @@ window.onload = function() {
         if (timer || confetti.length)
           return frame = requestAnimationFrame(loop);
 
+        // Cleanup
         document.body.removeChild(container);
         frame = undefined;
       });
     }
   }
 
-  // Add event listener for button click
+  // Attach event listener to button
   document.getElementById('confettiButton').addEventListener('click', poof);
 };
+
 
     </script>
 </body>
