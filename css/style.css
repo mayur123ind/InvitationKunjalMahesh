@@ -555,7 +555,7 @@ img {
 	font-style: normal;
 	font-size: 32px;
 	color: var(--primary-color);
-	margin: 16px;
+	margin: 40px;
 	text-align: center;
 }
 
@@ -1266,16 +1266,15 @@ a {
 	animation: confetti-fast 1.25s linear 1 forwards;
   }
   #confettiButton {
-	padding: 10px 20px;
-	font-size: 15px;
-	cursor: pointer;
+	padding: 7px 10px;
+	font-size: 16px;
+	
 	border: none;
 	border-radius: 5px;
 	color: white;
-	background: linear-gradient(to bottom, #93bceb, #357ABD); /* Button gradient */
-	transition: background 0.3s ease;
-  }
-      /* Button hover effect */
-	  #confettiButton:hover {
-		background: linear-gradient(to bottom, #357ABD, #4A90E2);
-	  }
+	background: linear-gradient(to right, #87CEEB, #7cc9e2); /* Linear sky blue */
+	transition: background 0.3s; /* Smooth background transition */
+}
+#confettiButton:hover {
+	background: linear-gradient(to right, #da86dd, #f56ed8); /* Darker shade on hover */
+}
